@@ -11,7 +11,7 @@ var authors = "YouSlovenia";
 var version = 1;
 
 var currency;
-var c1, c2;
+var c1, c2, c3;
 var c1Exp, c2Exp;
 
 var achievement1, achievement2;
@@ -44,7 +44,7 @@ var init = () => {
     {
         let getDesc = (level) => "c_3=\\sqrt{2^{" + level + "}}";
         let getInfo = (level) => "c_3=" + getC3(level).toString(0);
-        c3 = theory.createUpgrade(1, currency, new ExponentialCost(1e8, Math.log2(10)));
+        c3 = theory.createUpgrade(2, currency, new ExponentialCost(1e8, Math.log2(10)));
         c3.getDescription = (_) => Utils.getMath(getDesc(c3.level));
         c3.getInfo = (amount) => Utils.getMathTo(getInfo(c3.level), getInfo(c3.level + amount));
     }
