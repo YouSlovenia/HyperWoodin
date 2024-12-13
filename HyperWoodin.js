@@ -40,6 +40,15 @@ var init = () => {
         c2.getInfo = (amount) => Utils.getMathTo(getInfo(c2.level), getInfo(c2.level + amount));
     }
 
+    // c3
+    {
+        let getDesc = (level) => "c_3=\\sqrt{2^{" + level + "}}";
+        let getInfo = (level) => "c_3=" + getC3(level).toString(0);
+        c3 = theory.createUpgrade(1, currency, new ExponentialCost(1e8, Math.log2(10)));
+        c3.getDescription = (_) => Utils.getMath(getDesc(c3.level));
+        c3.getInfo = (amount) => Utils.getMathTo(getInfo(c3.level), getInfo(c3.level + amount));
+    }
+
     /////////////////////
     // Permanent Upgrades
     theory.createPublicationUpgrade(0, currency, 1e10);
@@ -112,6 +121,7 @@ var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.valu
 
 var getC1 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
+var getC3 = (level) => Math.sqrt(BigNumber.TWO.pow(level));
 var getC1Exponent = (level) => BigNumber.from(1 + 0.05 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.05 * level);
 
